@@ -1,0 +1,363 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+$titleFont: "Fraunces", serif;
+
+h1,
+h3,
+h5 {
+  font-family: $titleFont;
+}
+
+//text hightLight method
+@mixin hightLight($background) {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: calc(100% + 0.1rem);
+  height: 50%;
+  top: 60%;
+  left: -1%;
+  border-radius: 1rem;
+  background-color: $background;
+}
+
+//flex method
+@mixin flexCenter($flexDirection, $alignItems, $justifyContent) {
+  display: flex;
+  flex-direction: $flexDirection;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+
+.Nav {
+  @include flexCenter(row, center, initial);
+  background-color: #3ec0fe;
+  padding: 10px;
+  .navbar-img {
+    .navbar-brand {
+      margin: 0 0 0 10px;
+    }
+    .navbarToggler {
+      display: none;
+    }
+    .fa-bars {
+      color: #ffffff;
+    }
+  }
+  .navbarContent {
+    width: 50%;
+    margin-left: auto;
+    .navbarCollapse {
+      @include flexCenter(null, initial, space-around);
+      font-size: 1.2rem;
+      padding: 10px;
+      width: 100%;
+      .navLink {
+        color: white;
+        padding: 10px 30px;
+        text-decoration: none;
+        &:hover {
+          background-color: white;
+          color: hsl(212, 27%, 19%);
+          text-transform: uppercase;
+          font-family: $titleFont;
+          border-radius: 2rem;
+        }
+      }
+    }
+  }
+}
+.titleArea {
+  h1 {
+    z-index: 2;
+    position: absolute;
+    color: white;
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+    letter-spacing: 0.5rem;
+  }
+  .arrowDown {
+    position: absolute;
+    z-index: 3;
+    top: 75%;
+    left: 50%;
+    transform: translate(-75%, -70%);
+  }
+  .imgHeader {
+    position: relative;
+    width: 100%;
+  }
+  .imgHeader2 {
+    display: none;
+  }
+}
+
+.mainSection {
+  width: auto;
+  overflow: hidden;
+  .row {
+    .col-lg-6,
+    img {
+      padding: 0;
+      margin: 0;
+    }
+    img {
+      width: 100%;
+    }
+    .content {
+      @include flexCenter(column, flex-start, center);
+      text-align: left;
+      padding: 10%;
+      h1 {
+        margin-bottom: 30px;
+      }
+      p {
+        color: hsl(232, 10%, 55%);
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+      a {
+        font-family: $titleFont;
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        padding: 0 5px;
+        position: relative;
+        .hightlight::after {
+          @include hightLight(#fad40080);
+        }
+        .hightlight2::after {
+          @include hightLight(#fd756380);
+        }
+      }
+    }
+    .fruits {
+      position: relative;
+      .cherry2,
+      .orange2 {
+        display: none;
+      }
+      .img-content {
+        position: absolute;
+        top: 70%;
+        text-align: center;
+        width: 100%;
+        color: hsl(167, 40%, 24%);
+        h5 {
+          font-size: 2rem;
+        }
+        p {
+          padding: 20px;
+          margin: 0 20%;
+        }
+      }
+    }
+  }
+}
+
+.testimonialsArea {
+  padding: 200px 0;
+  width: auto;
+  overflow: hidden;
+  h3 {
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: hsl(210, 4%, 67%);
+    margin: 0 0 5rem 0;
+  }
+  .row {
+    padding: 0 10%;
+    .col-lg-4 {
+      @include flexCenter(column, center, initial);
+      text-align: center;
+      img {
+        border-radius: 50%;
+        margin: 10% 0;
+      }
+      p {
+        color: hsl(213, 9%, 39%);
+        margin-bottom: 50px;
+      }
+      h5 {
+        color: hsl(212, 27%, 19%);
+        margin-bottom: 15px;
+      }
+      .guestName {
+        color: hsl(210, 4%, 67%);
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #83cbbc;
+  width: auto;
+  overflow: hidden;
+  .footerLinks {
+    @include flexCenter(column, center, initial);
+    img {
+      margin: 50px 0 20px 0;
+    }
+    ul {
+      @include flexCenter(null, center, center);
+      list-style: none;
+      padding: 0;
+      .links {
+        margin: 20px;
+        a {
+          text-decoration: none;
+          color: hsl(168, 34%, 41%);
+        }
+      }
+      .SNS {
+        margin: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .Nav {
+    @include flexCenter(column, center, initial);
+    .navbar-img {
+      display: flex;
+      width: 100%;
+      .navbarToggler {
+        display: block;
+        margin-left: auto;
+        background-color: transparent;
+        border: none;
+        width: 10vw;
+        i {
+          font-size: 1.5rem;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+    .show-links {
+      display: block;
+    }
+    .navbarContent {
+      width: 90%;
+      margin: 20px 20px 0 20px;
+      z-index: 5;
+      display: none;
+      position: absolute;
+      top: 40px;
+      #triangle-bottomright {
+        width: 0;
+        height: 0;
+        border-bottom: 40px solid white;
+        border-left: 40px solid transparent;
+        margin-left: auto;
+      }
+      .navbarCollapse {
+        @include flexCenter(column, center, initial);
+        width: 100%;
+        background-color: #fff;
+
+        .navLink {
+          color: hsl(213, 9%, 39%);
+          margin: 15px;
+          &:hover {
+            background-color: hsl(51, 100%, 49%);
+            color: hsl(212, 27%, 19%);
+          }
+        }
+      }
+    }
+  }
+  .titleArea {
+    h1 {
+      font-size: 2.5rem;
+      top: 20%;
+    }
+    .arrowDown {
+      height: 10vh;
+      top: 45%;
+      left: 50%;
+    }
+    .imgHeader {
+      display: none;
+    }
+    .imgHeader2 {
+      display: block;
+      width: 100vw;
+      height: 60vh;
+    }
+  }
+
+  .mainSection {
+    .row {
+      .content {
+        @include flexCenter(null, center, initial);
+        text-align: center;
+        height: 50vh;
+        h1 {
+          padding: 0 20px;
+        }
+        p {
+          padding: 0 10px;
+        }
+      }
+      .fruits {
+        .cherry,
+        .orange {
+          display: none;
+        }
+        .cherry2,
+        .orange2 {
+          display: block;
+        }
+        .img-content {
+          p {
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .testimonialsArea {
+    padding: 100px 0 50px 0;
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .row {
+      .col-lg-4 {
+        p {
+          font-weight: 700;
+        }
+        .guestName {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .footer {
+    .footerLinks {
+      .footer-logo {
+        margin: 30px 0 0 0;
+        width: 45vw;
+      }
+      ul {
+        margin: 0;
+        li {
+          a {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}
